@@ -273,6 +273,18 @@ class Pokemon(db.Model):
 
         return [a[0] for a in result]
 
+    @staticmethod
+    def get_links():
+
+        query = (
+            db.session.query(
+                Links.name, Links.url
+            )
+        )
+
+        result = query.all()
+
+        return result
 
 class Gym(db.Model):
     gym_id = db.Column(
@@ -926,6 +938,13 @@ class RmVersion(db.Model):
         db.String(length=16, collation='utf8mb4_unicode_ci'), primary_key=True
     )
     val = db.Column(db.SmallInteger)
+
+class Links(db.Model):
+    __tablename__ = 'links'
+
+    id = db.Column(BIGINT, primary_key=True)
+    name = db.Column(db.String(length=250, collation='utf8mb4_unicode_ci'))
+    url = db.Column(db.String(length=250, collation='utf8mb4_unicode_ci'))
 
 
 def geofences_to_query(geofences, table_name, lat_column_name='latitude',

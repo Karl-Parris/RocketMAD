@@ -388,6 +388,61 @@ def create_app():
             i18n=i18n
         )
 
+    @app.route('/links')
+    @auth_required
+    def links_page(*_args, **kwargs):
+        if not kwargs['has_permission']:
+            return redirect(kwargs['redirect_uri'])
+
+        user_args = get_args(kwargs['access_config'])
+
+        if (user_args.no_pokestops or user_args.no_quests
+                or user_args.no_quest_page):
+            if args.client_auth:
+                if is_logged_in():
+                    abort(403)
+                else:
+                    return redirect(url_for('login_page'))
+            else:
+                abort(404)
+
+        settings = {
+            'generateImages': user_args.generate_images,
+            'motd': user_args.motd,
+            'motdTitle': user_args.motd_title,
+            'motdText': user_args.motd_text,
+            'motdPages': user_args.motd_pages,
+            'showMotdAlways': user_args.show_motd_always
+        }
+
+        links = Pokemon.get_links()
+
+        return render_template(
+            'links.html',
+            version=version,
+            lang=user_args.locale,
+            map_title=user_args.map_title,
+            custom_favicon=user_args.custom_favicon,
+            header_image=not user_args.no_header_image,
+            header_image_name=user_args.header_image,
+            client_auth=user_args.client_auth,
+            logged_in=is_logged_in(),
+            admin=is_admin(),
+            madmin_url=user_args.madmin_url,
+            donate_url=user_args.donate_url,
+            patreon_url=user_args.patreon_url,
+            discord_url=user_args.discord_url,
+            messenger_url=user_args.messenger_url,
+            telegram_url=user_args.telegram_url,
+            whatsapp_url=user_args.whatsapp_url,
+            pokemon_history_page=(not user_args.no_pokemon
+                                  and not user_args.no_pokemon_history_page),
+            analytics_id=user_args.analytics_id,
+            settings=settings,
+            i18n=i18n,
+            links=links
+        )
+
     @app.route('/mobile')
     @auth_required
     def mobile_page(*_args, **kwargs):

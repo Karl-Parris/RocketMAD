@@ -42,3 +42,4 @@ static/sounds/cries/*.wav
 !Tools/Easy-Setup/setup.bat
 !contrib/supervisord/gen-workers.sh
 !contrib/supervisord/install-reinstall.sh
+config.ini
