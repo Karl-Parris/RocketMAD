@@ -123,7 +123,8 @@ class ImageGenerator:
                 if args.pogo_assets:
                     pokemon_dirs = [
                         Path(args.pogo_assets) / 'pokemon_icons',
-                        Path(args.pogo_assets) / 'Images/Pokemon - 256x256'
+                        Path(args.pogo_assets) / 'Images/Pokemon - 256x256',
+                        Path(args.pogo_assets)
                     ]
                     for pokemon_dir in pokemon_dirs:
                         if pokemon_dir.exists():
@@ -180,7 +181,7 @@ class ImageGenerator:
                         ]
             return self._run_imagemagick(source, im_lines, target)
         else:
-            return self.path_icons / '{}.png'.format(pkm)
+            return path_icons / '{}.png'.format(pkm)
 
     def get_pokemon_map_icon(self, pkm, gender=GENDER_UNSET, form=0, costume=0,
                              evolution=EVOLUTION_UNSET, weather=None):
