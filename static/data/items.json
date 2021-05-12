@@ -8,7 +8,7 @@
   },
   "2": {
     "name": "Great Ball",
-    "questBundles": [5, 7]
+    "questBundles": [3, 5, 7]
   },
   "3": {
     "name": "Ultra Ball",
@@ -38,7 +38,7 @@
   },
   "103": {
     "name": "Hyper Potion",
-    "questBundles": [3]
+    "questBundles": [2, 3]
   },
   "104": {
     "name": "Max Potion",
@@ -46,7 +46,7 @@
   },
   "201": {
     "name": "Revive",
-    "questBundles": [2, 3, 4, 6, 8]
+    "questBundles": [1, 2, 3, 4, 6, 8]
   },
   "202": {
     "name": "Max Revive",
@@ -82,6 +82,9 @@
   "504": {
     "name": "Magnetic Lure Module"
   },
+  "505": {
+    "name": "Rainy Lure Module"
+  },
   "602": {
     "name": "X Attack"
   },
@@ -93,7 +96,7 @@
   },
   "701": {
     "name": "Razz Berry",
-    "questBundles": [3, 5, 6, 9]
+    "questBundles": [2, 3, 5, 6, 9]
   },
   "702": {
     "name": "Bluk Berry"
