@@ -261,6 +261,7 @@ function pokestopLabel(pokestop) {
                 <div>
                   <a href='javascript:${notifFunction}' class='link-button' title="${notifText}"><i class="${notifIconClass}"></i></a>
                   <a href='javascript:${excludeFunction}' class='link-button' title=${i18n('Hide')}><i class="fas fa-eye-slash"></i></a>
+                  <a href='javascript:removePokestopMarker("${pokestop.pokestop_id}")' class='link-button' title=${i18n('Remove')}><i class="fas fa-trash"></i></a>
                   ${infoButtonDisplay}
                 </div>
               </div>
@@ -334,6 +335,7 @@ function pokestopLabel(pokestop) {
                 <div>
                   <a href='javascript:toggleInvasionNotif(${invasionId})' class='link-button' title="${notifText}"><i class="${notifIconClass}"></i></a>
                   <a href='javascript:excludeInvasion(${invasionId})' class='link-button' title=${i18n('Hide')}><i class="fas fa-eye-slash"></i></a>
+                  <a href='javascript:removePokestopMarker("${pokestop.pokestop_id}")' class='link-button' title=${i18n('Remove')}><i class="fas fa-trash"></i></a>
                 </div>
               </div>
             </div>`
@@ -532,6 +534,10 @@ function setQuestFormFilter(name) {
     settings.questFormFilter = name
     updatePokestops()
     updateMap({ loadAllPokestops: true })
+}
+
+function removePokestopMarker(id) { // eslint-disable-line no-unused-vars
+    removeMarker(mapData.pokestops[id].marker)
 }
 
 function excludeQuestPokemon(id) { // eslint-disable-line no-unused-vars
